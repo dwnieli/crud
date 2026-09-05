@@ -4,4 +4,4 @@ Trabalho desenvolvido na disciplina Desenvolvimento para Web e Banco de Dados - 
 
 ## Linguagens utilizadas:  
   
-[![Skills](https://skillicons.dev/icons?i=php,html,css)](https://skillicons.dev)
+[![Skills](https://skillicons.dev/icons?i=php,mysql,html,css)](https://skillicons.dev)
