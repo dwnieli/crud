@@ -5,6 +5,7 @@
     Lista de ARTISTAS
     </br></br>
 
+    
      <table border = "1">
       <tr>
         <td><b>Código do Artista</b></td>
