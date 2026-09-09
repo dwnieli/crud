@@ -1,54 +1,52 @@
-<!DOCTYPE HTML>
-<HTML>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <BODY>
-        Lista de ARTISTAS
-        </br></br>
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="style.css">
+      <title>Trabalho Prático</title>
+   </head>
 
-        <div class="table">
-            <table border = "1">
-                <tr>
-                    <td><b>Código da Música</b></td>
-                    <td><b>Código do Álbum</b></td>
-                    <td><b>Título da Música</b></td>
-                    <td><b>Duração</b></td>
-                    <td><b>Alterar</b></td>
-                    <td><b>Excluir</b></td>
-                </tr>
+   <body>
 
-                <?php
-                    // criar conexao
-                    include_once("_conexao.php");
-                    $conexao = conectaBD();
+      <h1 class="titulo">Lista de MÚSICAS</h1>
 
-                    $sql = "SELECT * FROM musica;";
-                    $resultado = mysqli_query($conexao, $sql);
+      <table class="table">
+         <tr class="cabecalho">
+            <td><b>Código da Música</b></td>
+            <td><b>Código do Álbum</b></td>
+            <td><b>Título da Música</b></td>
+            <td><b>Duração</b></td>
+            <td><b>Alterar</b></td>
+            <td><b>Excluir</b></td>
+         </tr>
 
-                    while($i = mysqli_fetch_assoc($resultado)){
-                ?>
-                    <tr>
-                        <td><?php echo $i['cod_musica'];?></td>
-                        <td><?php echo $i['cod_album'];?></td>
-                        <td><?php echo $i['titulo'];?></td>
-                        <td><?php echo $i['duracao'];?></td>
+         <?php
+            // criar conexao
+            include_once("_conexao.php");
+            $conexao = conectaBD();
 
-                        <td><a href="<?php echo "musicaEditar.php?var_cod_musica=". $i['cod_musica']."&var_cod_album=".$i['cod_album']."&var_titulo=".$i['titulo']."&var_duracao=".$i['duracao']?>">Alterar</a></td>
-                        <td><a href="<?php echo "musicaDelete.php?var_cod_musica=". $i['cod_musica']?>">Excluir</a></td>
-                    </tr>
-                <?php
-                    }
-                ?>
-            </table>
-        </div>
-        <h4><a href="musica.html">Cadastrar nova MÚSICA</a></h4>
+            $sql = "SELECT * FROM musica;";
+            $resultado = mysqli_query($conexao, $sql);
 
-        <?php
-            mysqli_close($conexao);
-        ?>
-    </BODY>
-</HTML>
+            while($i = mysqli_fetch_assoc($resultado)){
+         ?>
+         <tr>
+            <td><?php echo $i['cod_musica'];?></td>
+            <td><?php echo $i['cod_album'];?></td>
+            <td><?php echo $i['titulo'];?></td>
+            <td><?php echo $i['duracao'];?></td>
+
+            <td><a class="alterar" href="<?php echo "musicaEditar.php?var_cod_musica=". $i['cod_musica']."&var_cod_album=".$i['cod_album']."&var_titulo=".$i['titulo']."&var_duracao=".$i['duracao']?>">Alterar</a></td>
+            <td><a class="excluir" href="<?php echo "musicaDelete.php?var_cod_musica=". $i['cod_musica']?>">Excluir</a></td>
+         </tr>
+         <?php
+            }
+         ?>
+      </table>
+      <p class="cadastrar"><a href="musica.html">Cadastrar nova MÚSICA</a></p>
+
+      <?php
+         mysqli_close($conexao);
+      ?>
+   </body>
+</html>
